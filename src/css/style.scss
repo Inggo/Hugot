@@ -1,0 +1,304 @@
+@import 'reset';
+@import 'variables';
+@import 'mixins';
+
+body,
+html {
+  font-size: $size;
+}
+
+body {
+  background: $background;
+  font-family: $font;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: $font-alt;
+  font-weight: bold;
+  text-align: left;
+}
+
+h1 {
+  @include respond-to(sm) {
+    font-size: 2rem;
+    letter-spacing: -1px;
+    line-height: 1.8rem;
+  }
+
+  font-size: 3rem;
+  letter-spacing: -2px;
+  line-height: 2.875rem;
+  padding: 1rem 0;
+}
+
+h2 {
+  font-size: 1.5rem;
+}
+
+a {
+  opacity: .75;
+  color: $secondary;
+  text-decoration: none;
+  transition: opacity .4s;
+
+  &:hover {
+    opacity: 1;
+  }
+}
+
+article {
+  text-align: justify;
+}
+
+b,
+strong {
+  font-weight: bold;
+}
+
+em,
+i {
+  font-style: italic;
+}
+
+img {
+  height: auto;
+  max-width: 100%;
+}
+
+p {
+  line-height: 1.35em;
+  margin-bottom: 1.35em;
+}
+
+.site-header {
+  background: $header-bg;
+  position: relative;
+
+  a {
+    opacity: 1;
+    color: $white;
+
+    &:hover {
+      opacity: .9;
+    }
+  }
+
+  .container {
+    align-items: left;
+    color: $header-color;
+    display: flex;
+    flex-direction: column;
+    height: 40vh;
+    justify-content: center;
+    min-height: 130px;
+    width: calc(100% - 60px);
+  }
+
+  .post-title {
+    font-size: 2rem;
+    letter-spacing: 1px;
+
+    .subtitle {
+      letter-spacing: 0;
+      font-weight: normal;
+    }
+  }
+}
+
+.container {
+  @include respond-to(md) {
+    max-width: $container-lg;
+  }
+
+  @include respond-to(lg) {
+    max-width: $container-xl;
+  }
+
+  margin: 0 auto;
+  padding: 0 30px;
+  position: relative;
+  z-index: 11;
+}
+
+.title {
+  text-transform: lowercase;
+
+  .first-word {
+    font-weight: bold;
+  }
+
+  .last-word {
+    @include respond-to(sm) {
+      left: -.5rem;
+    }
+
+    font-weight: normal;
+    left: -.6667rem;
+    position: relative;
+  }
+}
+
+.tagline {
+  @include respond-to(sm) {
+    font-size: 1rem;
+  }
+
+  display: block;
+  font-family: $font-alt;
+  font-size: 1.5rem;
+  font-weight: normal;
+  letter-spacing: -1px;
+  margin-bottom: 0;
+  margin-top: -.5rem;
+}
+
+.site-header-bg,
+.post-aside-bg {
+  background-position: center 50%;
+  background-size: cover;
+  height: 100%;
+  left: 0;
+  opacity: 0;
+  position: absolute;
+  top: 0;
+  transition: opacity 1s;
+  width: 100%;
+  z-index: 0;
+}
+
+.post-summary {
+  .hidden-from-summary {
+    display: none;
+  }
+
+  .subtitle {
+    top: -4px;
+  }
+}
+
+.post-date {
+  margin-bottom: 0;
+}
+
+.post-header {
+  padding: 2rem 30px 1.35rem;
+}
+
+.post-title {
+  .subtitle {
+    font-size: .75em;
+    position: relative;
+  }
+}
+
+.post-single {
+  padding: 60px 0;
+}
+
+.rating {
+  font-style: italic;
+  padding: 160px 0 60px;
+  position: relative;
+  text-align: center;
+
+  &::before {
+    background-image: url('~/img/thumbs.png');
+    background-repeat: no-repeat;
+    content: '';
+    left: 0;
+    margin: 0 auto;
+    position: absolute;
+    right: 0;
+  }
+
+  &.rating-5 {
+    &::before {
+      background-position: -142px -227px;
+      height: 141px;
+      top: 9px;
+      width: 142px;
+    }
+  }
+
+  &.rating-4 {
+    &::before {
+      background-position: -119px -104px;
+      height: 123px;
+      top: 18.5px;
+      width: 119px;
+    }
+  }
+
+  &.rating-3 {
+    &::before {
+      background-position: -96px 0;
+      height: 104px;
+      top: 32px;
+      width: 96px;
+    }
+  }
+
+  &.rating-2 {
+    &::before {
+      background-position: 0 0;
+      height: 104px;
+      top: 32px;
+      width: 96px;
+    }
+  }
+
+  &.rating-1 {
+    &::before {
+      background-position: 0 -104px;
+      height: 123px;
+      top: 18.5px;
+      width: 119px;
+    }
+  }
+
+  &.rating-0 {
+    &::before {
+      background-position: 0 -227px;
+      height: 141px;
+      top: 9px;
+      width: 142px;
+    }
+  }
+}
+
+.post-aside {
+  background: $primary;
+  color: $primary-inverted;
+  padding: 60px 0;
+  position: relative;
+
+  a {
+    color: $primary-inverted;
+  }
+}
+
+.tldr {
+  font-size: .9rem;
+
+  h3 {
+    line-height: 1.5rem;
+  }
+
+  p {
+    line-height: 1rem;
+    margin-bottom: 0;
+    padding: .1rem 0;
+  }
+
+  .tldr-label {
+    display: block;
+    font-size: .75rem;
+    letter-spacing: -1px;
+    line-height: 1rem;
+  }
+}

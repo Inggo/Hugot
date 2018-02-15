@@ -1,0 +1,25 @@
+@import url('https://fonts.googleapis.com/css?family=Raleway:400,700|Vollkorn:400,400i,700,700i');
+
+$font: "Vollkorn", serif;
+$font-alt: "Raleway", sans-serif;
+$size: 20px;
+
+$white: #fff;
+$black: #000;
+$pink: #ff1493;
+
+$background: $white;
+$primary: $black;
+$primary-inverted: invert($primary);
+$secondary: $pink;
+
+$header-bg: $black;
+$header-color: $white;
+
+$break-sm: 760px;
+$break-md: 1024px;
+$break-lg: 1200px;
+
+$container-md: 720px;
+$container-lg: 960px;
+$container-xl: 1140px;

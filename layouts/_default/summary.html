@@ -1,0 +1,10 @@
+<article class="post">
+  {{ partial "post-header.html" . }}
+  <section class="post-summary container">
+  {{ .Summary }}
+  </section>
+  <footer class="post-summary-footer container">
+    <a href="{{ .Permalink }}"><nobr>Continue Reading →</nobr></a>
+    <p class="post-author">by <b>{{ .Params.author.name }}</b></p>
+  </footer>
+</article>

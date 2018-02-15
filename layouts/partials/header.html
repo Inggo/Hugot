@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+  <meta name="author" content="{{ .Site.Author }}">
+
+  <title>
+    {{ if eq .Type "post" }}
+      {{ .Title }} {{ .Params.subtitle }} Review - {{ .Site.Params.name }}
+    {{ else }}
+      {{ .Title }}
+    {{ end }}
+  </title>
+
+  <link rel="shortcut icon" href="{{ .Site.BaseURL }}{{ .Site.Params.favicon }}">
+
+  <link rel="stylesheet" href="{{ .Site.BaseURL }}css/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <h1 class="heading">
+        <a class="title" href="/">
+          {{ if eq (.Site.Params.name | countwords) 2 }}
+          <span class="first-word">{{ index (split .Site.Params.name " ") 0 }}</span>
+          <span class="last-word">{{ index (split .Site.Params.name " ") 1 }}</span>
+          {{ else }}
+          {{ .Site.Params.name }}
+          {{ end }}
+        </a>
+      </h1>
+      {{ if eq .Type "post" }}
+        <h2 class="post-title">
+          <a href='{{ .Permalink }}'>
+            {{ .Title }}
+            {{ if isset .Params "subtitle" }}
+            <span class="subtitle">{{ .Params.subtitle }}</span>
+            {{ end }}
+          </a>
+        </h2>
+        <p class="post-date">{{ .PublishDate.Format "January 2, 2006" }}</p>
+      {{ else }}
+        <p class="tagline">{{ .Site.Params.description }}</p>
+      {{ end }}
+    </div>
+    <div class="site-header-bg"></div>
+  </header>
