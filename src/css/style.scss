@@ -66,9 +66,10 @@ i {
 }
 
 img {
-  height: auto;
-  max-width: 100%;
   display: block;
+  height: auto;
+  margin: 0 -30px;
+  max-width: calc(100% + 60px);
 }
 
 p {
@@ -81,8 +82,8 @@ p {
   position: relative;
 
   a {
-    opacity: 1;
     color: $white;
+    opacity: 1;
 
     &:hover {
       opacity: .9;
@@ -180,6 +181,10 @@ p {
   .subtitle {
     top: -4px;
   }
+}
+
+.post-summary-footer {
+  margin: 1.35rem auto;
 }
 
 .post-date {
@@ -309,7 +314,7 @@ p {
 }
 
 .post-footer {
-  padding: 30px 0;
+  padding: 30px;
 }
 
 .post-tags {
@@ -355,6 +360,6 @@ p {
 
 .site-license,
 .site-copyright {
-  font-size: .8rem;
-  margin: 0;
+  font-size: .675rem;
+  margin: 0 0 .3375rem;
 }
