@@ -57,14 +57,39 @@
             <div class="post-aside-bg"></div>
         </aside>
 
-        {{ with .Params.tags }}
-        <ul id="tags">
-          {{ range . }}
-            <li> <a href="{{ "tags/" | absURL }}{{ . | urlize }}">{{ . }}</a> </li>
-          {{ end }}
-        </ul>
-        {{ end }}
+        <footer class="post-footer container">
+            {{ with .Params.tags }}
+            <section class="post-tags">
+                <span class="label">Labels:</span>
+                <ul class="tags">
+                  {{ range . }}
+                    <li><a href="{{ "tags/" | absURL }}{{ . | urlize }}">{{ . }}</a></li>
+                  {{ end }}
+                </ul>
+            </section>
+            {{ end }}
+            <p class="post-author">by <b>{{ .Params.author.name }}</b></p>
+        </footer>
     </article>
+
+    <section class="post-comments container">
+        <div id="disqus_thread"></div>
+        <script>
+
+        var disqus_config = function () {
+        this.page.url = '{{ .Permalink }}';
+        this.page.identifier = '{{ .Params.slug }}';
+        };
+        (function() {
+        var d = document, s = d.createElement('script');
+        s.src = 'https://inggo-noms.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+        })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </section>
+
 </main>
 
 {{ partial "footer.html" . }}

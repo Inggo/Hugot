@@ -1,5 +1,10 @@
-<footer id="site-footer">
-  <p>{{ $.Site.Copyright }}</p>
+<footer class="site-footer container">
+  {{ if .Site.Params.license }}
+  <p class="site-license">
+    This work is licensed under a <a href="{{ .Site.Params.license }}" target="_blank">{{ .Site.Params.licenseName }} License</a>.
+  </p>
+  {{ end }}
+  <p class="site-copyright">{{ $.Site.Copyright | markdownify }}</p>
 </footer>
 {{ partial "scripts.html" . }}
 </body>
