@@ -68,8 +68,9 @@ i {
 img {
   display: block;
   height: auto;
-  margin: 0 -30px;
-  max-width: calc(100% + 60px);
+  margin: 0 auto;
+  max-width: $img-max;
+  width: 100%;
 }
 
 p {
@@ -77,7 +78,8 @@ p {
   margin-bottom: 1.35em;
 }
 
-.site-header {
+.site-header,
+.secondary-header {
   background: $header-bg;
   position: relative;
 
@@ -109,6 +111,12 @@ p {
       letter-spacing: 0;
       font-weight: normal;
     }
+  }
+}
+
+.secondary-header {
+  .container {
+    height: 25vh;
   }
 }
 
@@ -165,17 +173,37 @@ p {
   background-size: cover;
   height: 100%;
   left: 0;
-  opacity: 0;
+  opacity: .25;
   position: absolute;
   top: 0;
-  transition: opacity 1s;
   width: 100%;
   z-index: 0;
 }
 
+.post + .post {
+  border-top: 1px solid $border;
+}
+
+.media-image {
+  margin: 2rem -30px -1rem;
+}
+
+@include respond-to(lg) {
+  .post-summmary-container {
+    clear: both;
+  }
+
+  .media-image {
+    float: left;
+    margin: 2rem .675rem .675rem 0;
+    max-width: 350px;
+  }
+}
+
 .post-summary {
-  .hidden-from-summary {
-    display: none;
+  .post-header {
+    padding-left: 0;
+    padding-right: 0;
   }
 
   .subtitle {
@@ -208,7 +236,7 @@ p {
 
 .post-single {
   padding: 60px 0;
-}
+} 
 
 .rating {
   font-style: italic;
@@ -350,8 +378,27 @@ p {
   }
 }
 
+.post-content {
+  img {
+    @include respond-to(lg) {
+      margin: 0 auto;
+      width: 100%;
+    }
+
+    margin: 0 -30px;
+    width: calc(100% + 60px);
+  }
+}
+
 .post-comments {
   margin: -60px auto 60px;
+}
+
+.pagination {
+  align-items: justify-content;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 60px;
 }
 
 .site-footer {

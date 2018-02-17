@@ -45,5 +45,12 @@
         <p class="tagline">{{ .Site.Params.description }}</p>
       {{ end }}
     </div>
-    <div class="site-header-bg"></div>
+    {{ if eq .Type "review" }}
+    <div class="site-header-bg" style="background-image: url('{{ .Params.headerbg }}')"></div>
+    {{ else }}
+    {{ $mysection := ($.Site.GetPage "section" .Section).Pages }}
+    {{ range first 1 $mysection }}
+    <div class="site-header-bg" style="background-image: url('{{ .Params.headerbg }}')"></div>
+    {{ end }}
+    {{ end }}
   </header>

@@ -1,10 +1,19 @@
-<article class="post">
-  {{ partial "post-header.html" . }}
-  <section class="post-summary container">
-  {{ .Summary }}
-  </section>
-  <footer class="post-summary-footer container">
-    <a class="continue-reading" href="{{ .Permalink }}"><nobr>Continue Reading →</nobr></a>
-    <p class="post-author">by <b>{{ .Params.author.name }}</b></p>
-  </footer>
+<article class="post container">
+  <div class="post-summary-container">
+    {{ if .Params.mediaimg }}
+    <figure class="media-image">
+      <a href="{{ .Permalink }}">
+        <img src="{{ .Params.mediaimg }}" alt="{{ .Title }}"/>
+      </a>
+    </figure>
+    {{ end }}
+    <section class="post-summary">
+      {{ partial "post-header.html" . }}
+        {{ .Summary }}
+      <footer class="post-summary-footer">
+        <a class="continue-reading" href="{{ .Permalink }}"><nobr>Continue Reading →</nobr></a>
+        <p class="post-author">by <b>{{ .Params.author.name }}</b></p>
+      </footer>
+    </section>
+  </div>
 </article>

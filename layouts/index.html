@@ -1,8 +1,11 @@
 {{ partial "header.html" . }}
 
 <main>
-    {{ $paginator := .Paginate (where .Data.Pages "Section" "review")  5 }}
-    {{ range $paginator.Pages }}
+    {{ $paginator := .Paginate (where .Data.Pages "Section" "review")  10 }}
+    {{ range $index, $element := $paginator.Pages }}
+        {{ if eq (mod $index 5) 3 }}
+        {{ partial "adsense.html" }}
+        {{ end }}
         {{ .Render "summary" }}
     {{ end }}
     {{ partial "paginator.html" . }}

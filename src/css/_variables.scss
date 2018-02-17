@@ -1,7 +1,9 @@
 @import url('https://fonts.googleapis.com/css?family=Raleway:400,700|Vollkorn:400,400i,700,700i');
+@import 'fontello/css/fontello.css';
+@import 'fontello/css/animation.css';
 
-$font: "Vollkorn", serif;
-$font-alt: "Raleway", sans-serif;
+$font: 'Vollkorn', serif;
+$font-alt: 'Raleway', sans-serif;
 $size: 20px;
 
 $white: #fff;
@@ -12,14 +14,17 @@ $background: $white;
 $primary: $black;
 $primary-inverted: invert($primary);
 $secondary: $pink;
+$border: lighten($pink, 33%);
 
 $header-bg: $black;
 $header-color: $white;
+
+$img-max: 720px;
 
 $break-sm: 760px;
 $break-md: 1024px;
 $break-lg: 1200px;
 
-$container-md: 560px;
-$container-lg: 720px;
-$container-xl: 960px;
+$container-md: 480px;
+$container-lg: 640px;
+$container-xl: 800px;
