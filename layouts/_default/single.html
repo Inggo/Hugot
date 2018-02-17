@@ -1,3 +1,4 @@
+{{ $.Scratch.Add "single" true }}
 {{ partial "header.html" . }}
 
 <article class="post post-single">
@@ -9,6 +10,7 @@
     {{ end }}
     </section>
 
+    {{ if eq .Type "reviews" }}
     <aside class="post-aside">
         <section class="tldr container">
             <h3>tl;dr</h3>
@@ -55,6 +57,7 @@
         </section>
         <div class="post-aside-bg" style="background-image: url('{{ .Params.asidebg }}')"></div>
     </aside>
+    {{ end }}
 
     <footer class="post-footer container">
         {{ with .Params.tags }}

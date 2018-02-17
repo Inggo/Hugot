@@ -1,8 +1,7 @@
 {{ partial "header.html" . }}
 
 <main>
-    {{ $paginator := .Paginate (where .Data.Pages "Section" "review")  10 }}
-    {{ range $paginator.Pages }}
+    {{ range .Paginator.Pages }}
         {{ .Render "summary" }}
     {{ end }}
     {{ partial "paginator.html" . }}

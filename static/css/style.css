@@ -225,6 +225,7 @@ table {
 body,
 html {
   font-size: 20px;
+  min-width: 320px;
 }
 
 body {
@@ -296,63 +297,26 @@ img {
   width: 100%;
 }
 
-p {
+p,
+ol,
+ul {
   line-height: 1.35em;
   margin-bottom: 1.35em;
 }
 
-.site-header,
-.secondary-header {
-  background: #000;
-  position: relative;
+ol {
+  list-style: decimal;
+  margin-left: 1rem;
 }
 
-.site-header a,
-.secondary-header a {
-  color: #fff;
-  opacity: 1;
+ol,
+ul {
+  margin-left: 1rem;
 }
 
-.site-header a:hover,
-.secondary-header a:hover {
-  opacity: .9;
-}
-
-.site-header .container,
-.secondary-header .container {
-  -webkit-box-align: left;
-      -ms-flex-align: left;
-          align-items: left;
-  color: #fff;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  height: 40vh;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  min-height: 130px;
-  width: calc(100% - 60px);
-}
-
-.site-header .post-title,
-.secondary-header .post-title {
-  font-size: 2rem;
-  letter-spacing: 1px;
-}
-
-.site-header .post-title .subtitle,
-.secondary-header .post-title .subtitle {
-  letter-spacing: 0;
-  font-weight: normal;
-}
-
-.secondary-header .container {
-  height: 25vh;
+ol li,
+ul li {
+  padding-left: 1rem;
 }
 
 .container {
@@ -372,6 +336,55 @@ p {
   .container {
     max-width: 800px;
   }
+}
+
+.site-header {
+  background: #000;
+  position: relative;
+}
+
+.site-header a {
+  color: #fff;
+  opacity: 1;
+}
+
+.site-header a:hover {
+  opacity: .9;
+}
+
+.site-header .container {
+  -webkit-box-align: left;
+      -ms-flex-align: left;
+          align-items: left;
+  color: #fff;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  height: 40vh;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  min-height: 130px;
+  width: calc(100% - 60px);
+}
+
+.site-header .post-title {
+  font-size: 2rem;
+  letter-spacing: 1px;
+  margin-top: -.675rem;
+}
+
+.site-header .post-title .subtitle {
+  font-weight: normal;
+  letter-spacing: 0;
+}
+
+.secondary-header .container {
+  height: 25vh;
 }
 
 .title {
@@ -401,7 +414,7 @@ p {
   font-weight: normal;
   letter-spacing: -1px;
   margin-bottom: 0;
-  margin-top: -.5rem;
+  margin-top: -.9rem;
 }
 
 @media only screen and (max-width: 760px) {
@@ -423,6 +436,63 @@ p {
   z-index: 0;
 }
 
+.main-menu {
+  background: rgba(255, 255, 255, 0.5);
+  margin-top: -2rem;
+  position: relative;
+}
+
+.navigation {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  font-weight: bold;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  padding: 0;
+}
+
+@media only screen and (max-width: 760px) {
+  .navigation {
+    font-size: .75rem;
+  }
+}
+
+.navigation li {
+  border-right: 1px solid rgba(255, 255, 255, 0.6667);
+  line-height: 2rem;
+  margin: 0;
+  padding: 0;
+  width: 25%;
+}
+
+.navigation li:last-child {
+  border-right: 0;
+}
+
+.navigation a {
+  color: #000;
+  display: block;
+  font-family: "Raleway", sans-serif;
+  letter-spacing: -1px;
+  opacity: .5;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.navigation a:hover {
+  opacity: 1;
+}
+
+.navigation .active {
+  background: rgba(255, 255, 255, 0.6667);
+}
+
+.navigation .active a {
+  opacity: .9;
+}
+
 .post + .post {
   border-top: 1px solid #ffbce0;
 }
@@ -431,7 +501,7 @@ p {
   margin: 2rem -30px -1rem;
 }
 
-@media only screen and (min-width: 1200px) {
+@media only screen and (min-width: 761px) {
   .post-summmary-container {
     clear: both;
   }
@@ -440,6 +510,8 @@ p {
     float: left;
     margin: 2rem .675rem .675rem 0;
     max-width: 350px;
+    position: relative;
+    z-index: 12;
   }
 }
 
@@ -585,6 +657,7 @@ p {
 .tags {
   line-height: 1rem;
   padding: .1rem 0;
+  margin: 0;
 }
 
 .tags > :last-child::before {
@@ -595,8 +668,14 @@ p {
   display: none;
 }
 
+.tags > :only-child::before {
+  display: none;
+}
+
 .tags li {
   display: inline;
+  margin: 0;
+  padding: 0;
 }
 
 .tags li::after {
@@ -636,8 +715,9 @@ p {
   padding: 60px 30px;
 }
 
-.site-license,
-.site-copyright {
+.site-disclaimer,
+.site-copyright,
+.site-license {
   font-size: .675rem;
   margin: 0 0 .3375rem;
 }

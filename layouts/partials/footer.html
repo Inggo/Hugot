@@ -1,4 +1,7 @@
 <footer class="site-footer container">
+  {{ if .Site.Params.disclaimer }}
+  <p class="site-disclaimer">{{ $.Site.Params.disclaimer | markdownify }}</p>
+  {{ end }}
   {{ if .Site.Params.license }}
   <p class="site-license">
     This work is licensed under a <a href="{{ .Site.Params.license }}" target="_blank">{{ .Site.Params.licenseName }} License</a>.

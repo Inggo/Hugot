@@ -1,12 +1,11 @@
-{{ $paginator := .Paginate (where .Data.Pages "Section" "review")  10 }}
 <nav class="container pagination">
-  {{ if $paginator.HasNext }}
-    <a href="{{ $paginator.Next.URL }}" class="next-page">
+  {{ if .Paginator.HasNext }}
+    <a href="{{ .Paginator.Next.URL }}" class="next-page">
       &laquo; Earlier Articles
     </a>
   {{ end }}
-  {{ if $paginator.HasPrev }}
-  <a href="{{ $paginator.Prev.URL }}" class="prev-page">
+  {{ if .Paginator.HasPrev }}
+  <a href="{{ .Paginator.Prev.URL }}" class="prev-page">
     Later Articles &raquo;
   </a>
   {{ end }}

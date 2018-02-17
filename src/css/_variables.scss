@@ -19,6 +19,9 @@ $border: lighten($pink, 33%);
 $header-bg: $black;
 $header-color: $white;
 
+$nav-bg: transparentize($primary-inverted, .5);
+$nav-border: transparentize($primary-inverted, .3333);
+
 $img-max: 720px;
 
 $break-sm: 760px;

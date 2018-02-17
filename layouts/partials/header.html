@@ -7,8 +7,10 @@
   <meta name="author" content="{{ .Site.Author }}">
 
   <title>
-    {{ if eq .Type "review" }}
+    {{ if eq .Type "reviews" }}
       {{ .Title }} {{ .Params.subtitle }} Review - {{ .Site.Params.name }}
+    {{ else if $.Scratch.Get "single" }}
+      {{ .Title }} {{ .Params.subtitle }} - {{ .Site.Params.name }}
     {{ else }}
       {{ .Title }}
     {{ end }}
@@ -31,7 +33,7 @@
           {{ end }}
         </a>
       </h1>
-      {{ if eq .Type "review" }}
+      {{ if $.Scratch.Get "single" }}
         <h2 class="post-title">
           <a href='{{ .Permalink }}'>
             {{ .Title }}
@@ -45,12 +47,14 @@
         <p class="tagline">{{ .Site.Params.description }}</p>
       {{ end }}
     </div>
-    {{ if eq .Type "review" }}
+    {{ if eq .Type "reviews" }}
     <div class="site-header-bg" style="background-image: url('{{ .Params.headerbg }}')"></div>
     {{ else }}
-    {{ $mysection := ($.Site.GetPage "section" .Section).Pages }}
-    {{ range first 1 $mysection }}
+    {{ $reviews := ($.Site.GetPage "section" "reviews").Pages }}
+    {{ range first 1 $reviews }}
     <div class="site-header-bg" style="background-image: url('{{ .Params.headerbg }}')"></div>
     {{ end }}
     {{ end }}
   </header>
+
+  {{ partial "navigation.html" . }}
