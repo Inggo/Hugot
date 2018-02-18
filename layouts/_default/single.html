@@ -1,4 +1,5 @@
 {{ $.Scratch.Add "single" true }}
+{{ $.Scratch.Add "meta-desc" (.Summary | truncate 255) }}
 {{ partial "header.html" . }}
 
 <article class="post post-single">
@@ -71,18 +72,12 @@
         </section>
         {{ end }}
         <p class="post-author">by <b>{{ .Params.author.name }}</b></p>
+
+        {{ partial "adsense-inarticle.html" . }}
+
+        {{ partial "disqus.html" . }}
     </footer>
 
-    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-    <ins class="adsbygoogle"
-         style="display:block; text-align:center;"
-         data-ad-layout="in-article"
-         data-ad-format="fluid"
-         data-ad-client="ca-pub-7748129663866128"
-         data-ad-slot="8544038730"></ins>
-    <script>
-         (adsbygoogle = window.adsbygoogle || []).push({});
-    </script>
 
     <section class="up-next container">
         {{ with .PrevInSection }}

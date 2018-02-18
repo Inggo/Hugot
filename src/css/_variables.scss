@@ -15,6 +15,7 @@ $primary: $black;
 $primary-inverted: invert($primary);
 $secondary: $pink;
 $border: lighten($pink, 33%);
+$footer-bg: darken($white, 3.33%);
 
 $header-bg: $black;
 $header-color: $white;

@@ -91,7 +91,7 @@ ul {
   margin-left: 1rem;
 
   li {
-    padding-left: 1rem;
+    padding-left: .5rem;
   }
 }
 
@@ -249,12 +249,32 @@ ul {
   }
 }
 
-.post + .post {
-  border-top: 1px solid $border;
+.ad {
+  padding: 2rem 30px 1.35rem;
+}
+
+.ad,
+.post {
+  border-bottom: 1px solid $border;
+}
+
+.post-single {
+  border-bottom: none;
 }
 
 .media-image {
-  margin: 2rem -30px -1rem;
+  margin: 2rem -30px -5%;
+  position: relative;
+  z-index: 12;
+
+  &::after {
+    background: $background;
+    bottom: 0;
+    content: '';
+    height: 5%;
+    position: absolute;
+    width: 100%;
+  }
 }
 
 @include respond-to(gt-md) {
@@ -265,9 +285,18 @@ ul {
   .media-image {
     float: left;
     margin: 2rem .675rem .675rem 0;
+    max-height: 235px;
     max-width: 350px;
-    position: relative;
-    z-index: 12;
+    overflow: hidden;
+
+    &::after {
+      display: none;
+    }
+
+    img {
+      position: relative;
+      top: -12.5px;
+    }
   }
 }
 
@@ -471,17 +500,23 @@ ul {
 }
 
 .post-comments {
-  margin: -60px auto 60px;
+  margin: 60px auto;
+}
+
+.single-page {
+  padding-top: 60px;
 }
 
 .pagination {
   align-items: justify-content;
   display: flex;
   justify-content: space-between;
-  margin-top: 60px;
+  margin-top: 30px;
+  margin-bottom: 60px;
 }
 
 .site-footer {
+  background: $footer-bg;
   padding: 60px 30px;
 }
 
@@ -490,4 +525,5 @@ ul {
 .site-license {
   font-size: .675rem;
   margin: 0 0 .3375rem;
+  text-align: center;
 }
