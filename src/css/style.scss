@@ -4,6 +4,9 @@
 
 body,
 html {
+  @include respond-to(xs) {
+    font-size: $size-xs;
+  }
   font-size: $size;
   min-width: 320px;
 }
@@ -34,16 +37,17 @@ h1 {
   font-size: 3rem;
   letter-spacing: -2px;
   line-height: 2.875rem;
-  padding: 1rem 0;
+  padding: 0 0 1rem;
 }
 
 h2 {
   font-size: 1.5rem;
+  line-height: 1.25rem;
 }
 
 a {
-  opacity: .75;
   color: $secondary;
+  opacity: .75;
   text-decoration: none;
   transition: opacity .4s;
 
@@ -124,6 +128,10 @@ ul {
   }
 
   .container {
+    @include respond-to(xs) {
+      height: 60vh;
+    }
+
     align-items: left;
     color: $header-color;
     display: flex;
@@ -143,12 +151,6 @@ ul {
       font-weight: normal;
       letter-spacing: 0;
     }
-  }
-}
-
-.secondary-header {
-  .container {
-    height: 25vh;
   }
 }
 
@@ -316,7 +318,7 @@ ul {
 }
 
 .post-date {
-  margin-bottom: 0;
+  margin: 0 0 .5rem;
 }
 
 .post-header {
@@ -412,7 +414,7 @@ ul {
 .post-aside {
   background: $primary;
   color: $primary-inverted;
-  padding: 60px 0;
+  padding: 3rem 0;
   position: relative;
 
   a {

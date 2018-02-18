@@ -1,4 +1,7 @@
 @mixin respond-to($media) {
+  @if $media == xs {
+    @media only screen and (max-width: $break-xs) { @content; }
+  }
   @if $media == sm {
     @media only screen and (max-width: $break-sm) { @content; }
   }

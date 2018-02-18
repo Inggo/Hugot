@@ -2,6 +2,10 @@ window.axios = require('axios');
 
 window.onload = function () {
   var parallax = function () {
+    if (window.innerWidth <= 500) {
+      return;
+    }
+
     var $siteHeaderBgs = document.getElementsByClassName("site-header-bg");
     var $asideBgs = document.getElementsByClassName("post-aside-bg");
 
