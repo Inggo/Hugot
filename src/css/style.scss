@@ -289,19 +289,16 @@ ul {
   }
 
   .media-image {
-    float: left;
-    margin: 2rem .675rem .35rem 0;
-    max-height: 235px;
+    align-items: center;
+    display: flex;
+    float: right;
+    margin: 2rem 0 0 .675rem;
+    max-height: 180px;
     max-width: 350px;
     overflow: hidden;
 
     &::after {
       display: none;
-    }
-
-    img {
-      position: relative;
-      top: -12.5px;
     }
   }
 }
