@@ -154,6 +154,10 @@ ul {
   }
 }
 
+.post-date + .post-title {
+  margin-top: -.5rem;
+}
+
 .title {
   text-transform: lowercase;
 
@@ -286,7 +290,7 @@ ul {
 
   .media-image {
     float: left;
-    margin: 2rem .675rem .675rem 0;
+    margin: 2rem .675rem .35rem 0;
     max-height: 235px;
     max-width: 350px;
     overflow: hidden;
