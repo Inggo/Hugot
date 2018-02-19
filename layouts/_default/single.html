@@ -51,7 +51,7 @@
 
             {{ if isset .Params "tip" }}
             <p>
-                <span class="tldr-label">Smart nomnomnom tip:</span>
+                <span class="tldr-label">{{ if isset .Params "tipoverride" }}{{ .Params.tipoverride |markdownify }}{{ else }}Smart nomnomnom tip:{{ end }}</span>
                 <span class="tldr-value">{{ .Params.tip | markdownify }}</span>
             </p>
             {{ end }}
