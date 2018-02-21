@@ -256,7 +256,7 @@ ul {
 }
 
 .ad {
-  padding: 2rem 30px 1.35rem;
+  padding: 1.35rem 30px;
 }
 
 .ad,
@@ -265,7 +265,11 @@ ul {
 }
 
 .post-single {
-  border-bottom: none;
+  border-bottom: 0;
+
+  .ad {
+    border-bottom: 0;
+  }
 }
 
 .media-image {
