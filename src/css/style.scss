@@ -289,6 +289,14 @@ ul {
     position: absolute;
     width: 100%;
   }
+
+  a {
+    opacity: 1;
+
+    &:hover {
+      opacity: .9;
+    }
+  }
 }
 
 @include respond-to(gt-md) {
