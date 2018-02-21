@@ -3,7 +3,11 @@
     {{ if .Params.mediaimg }}
     <figure class="media-image">
       <a href="{{ .Permalink }}">
-        <img src="{{ .Params.mediaimg }}" alt="{{ .Title }}"/>
+        <picture>
+          <source media="(max-width: 350px)" srcset="{{ .Params.mediaimg }}">
+          <source media="(max-width: 760px)" srcset="{{ replace .Params.mediaimg "/thumbs/" "/" }}">
+          <img src="{{ .Params.mediaimg }}" alt="{{ .Title }}"/>
+        </picture>
       </a>
     </figure>
     {{ end }}
