@@ -270,6 +270,10 @@ ul {
   .ad {
     border-bottom: 0;
   }
+
+  p + .ad {
+    margin-top: -1.35rem;
+  }
 }
 
 .media-image {
