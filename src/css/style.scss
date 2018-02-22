@@ -99,6 +99,17 @@ ul {
   }
 }
 
+button,
+input[type=image] {
+  &:active,
+  &:focus {
+    opacity: .8;
+    border-color: transparent;
+    box-shadow: none;
+    outline-style: none;
+  }
+}
+
 .container {
   @include respond-to(md) {
     max-width: $container-lg;
@@ -461,7 +472,7 @@ ul {
 }
 
 .post-tags {
-  margin: 0 0 0.675rem;
+  margin: 0 0 .675rem;
 
   .label {
     font-size: .75rem;
@@ -472,8 +483,8 @@ ul {
 
 .tags {
   line-height: 1rem;
-  padding: .1rem 0;
   margin: 0;
+  padding: .1rem 0;
 
   > :last-child {
     &::before {
@@ -526,8 +537,61 @@ ul {
   align-items: justify-content;
   display: flex;
   justify-content: space-between;
-  margin-top: 30px;
   margin-bottom: 60px;
+  margin-top: 30px;
+}
+
+.google-cs-container {
+  max-width: 275px;
+  opacity: 1;
+  top: 1rem;
+
+  .gsc-control-cse {
+    background: transparent;
+    border: 0;
+    padding: 0;
+  }
+}
+
+.scroll-to-top {
+  background: $secondary;
+  border: 0;
+  bottom: 1rem;
+  color: $background;
+  cursor: pointer;
+  display: flex;
+  height: 2rem;
+  justify-content: center;
+  opacity: 0;
+  transform: translateY(55px);
+  width: 2rem;
+
+  &:active,
+  &:focus {
+    opacity: 0;
+  }
+}
+
+.google-cs-container,
+.scroll-to-top {
+  position: fixed;
+  right: 1rem;
+  transition: opacity .6s, transform .6s;
+  z-index: 115;
+}
+
+.is-scrolled .google-cs-container {
+  opacity: 0;
+  transform: translateY(-55px);
+}
+
+.is-scrolled .scroll-to-top {
+  opacity: .5;
+  transform: translateY(0);
+
+  &:hover {
+    opacity: 1;
+  }
 }
 
 .site-footer {

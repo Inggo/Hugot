@@ -1,3 +1,24 @@
+{{ if .Site.Params.googleCustomSearch }}
+<div class="google-cs-container">
+  <script>
+    (function() {
+      var cx = '{{ .Site.Params.googleCustomSearch }}';
+      var gcse = document.createElement('script');
+      gcse.type = 'text/javascript';
+      gcse.async = true;
+      gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
+      var s = document.getElementsByTagName('script')[0];
+      s.parentNode.insertBefore(gcse, s);
+    })();
+  </script>
+  <gcse:search></gcse:search>
+</div>
+{{ end }}
+
+<button class="scroll-to-top" type="button">
+  <i class="icon-up"></i>
+</button>
+
 <footer class="site-footer">
   {{ if .Site.Params.disclaimer }}
   <p class="site-disclaimer">{{ $.Site.Params.disclaimer | markdownify }}</p>

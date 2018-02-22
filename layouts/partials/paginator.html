@@ -1,12 +1,12 @@
 <nav class="container pagination">
   {{ if .Paginator.HasNext }}
     <a href="{{ .Paginator.Next.URL }}" class="next-page">
-      &laquo; Earlier Articles
+      <i class="icon-laquo"></i> Earlier Articles
     </a>
   {{ end }}
   {{ if .Paginator.HasPrev }}
   <a href="{{ .Paginator.Prev.URL }}" class="prev-page">
-    Later Articles &raquo;
+    Later Articles <i class="icon-raquo"></i>
   </a>
   {{ end }}
 </nav>

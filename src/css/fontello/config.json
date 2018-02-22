@@ -11,6 +11,24 @@
       "css": "spin",
       "code": 59444,
       "src": "fontelico"
+    },
+    {
+      "uid": "fe6697b391355dec12f3d86d6d490397",
+      "css": "up",
+      "code": 59394,
+      "src": "fontawesome"
+    },
+    {
+      "uid": "fdfbd1fcbd4cb229716a810801a5f207",
+      "css": "raquo",
+      "code": 61697,
+      "src": "fontawesome"
+    },
+    {
+      "uid": "745f12abe1472d14f8f658de7e5aba66",
+      "css": "laquo",
+      "code": 61696,
+      "src": "fontawesome"
     }
   ]
 }
