@@ -3,6 +3,8 @@ window.Velo = require('velocity-animate');
 window.axios = require('axios');
 
 window.onload = function () {
+  var lastScrollTop = 0;
+
   var parallax = function () {
     if (window.innerWidth <= 500) {
       return;
@@ -21,25 +23,55 @@ window.onload = function () {
   };
 
   var scrollClass = function () {
+    var $htmlCL = document.getElementsByTagName('html')[0].classList;
+
     if (window.scrollY > window.innerHeight/2) {
-      document.getElementsByTagName('html')[0].classList.add("is-scrolled");
+      $htmlCL.add("is-scrolled");
     } else {
-      document.getElementsByTagName('html')[0].classList.remove("is-scrolled");
+      $htmlCL.remove("is-scrolled");
     }
+
+    var beyondNav = document.querySelector('.site-header > .container').getBoundingClientRect().height - document.getElementsByClassName('main-menu')[0].getBoundingClientRect().height;
+
+    if (window.scrollY > beyondNav) {
+      $htmlCL.add("fix-nav");
+    } else {
+      $htmlCL.remove("fix-nav");
+    }
+
+
+    var st = window.pageYOffset || document.documentElement.scrollTop; // Credits: "https://github.com/qeremy/so/blob/master/so.dom.js#L426"
+    if (st > lastScrollTop){
+      $htmlCL.add("scrolling-down");
+      $htmlCL.remove("scrolling-up");
+    } else {
+      $htmlCL.add("scrolling-up");
+      $htmlCL.remove("scrolling-down");
+    }
+    lastScrollTop = st;
   };
 
   document.getElementsByClassName('scroll-to-top')[0].onclick = function () {
+    var $stt = this;
+    $stt.classList.add('scrolling');
     Velo(
       document.getElementsByTagName('html'),
       "scroll",
-      { offset: 0, mobileHA: false }
+      { 
+        duration: 600,
+        offset: 0, 
+        mobileHA: false,
+        complete: () => {
+          $stt.classList.remove('scrolling');
+        }
+      }
     );
   };
 
-  window.onscroll = function () {
+  window.addEventListener("scroll", () => {
     scrollClass();
     parallax();
-  };
+  }, false);
 
   scrollClass();
   parallax();

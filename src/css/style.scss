@@ -214,6 +214,45 @@ input[type=image] {
   z-index: 0;
 }
 
+.fix-nav {
+  body {
+    @include respond-to(xs) {
+      padding-top: 60vh;
+    }
+
+    padding-top: 40vh;
+  }
+
+  .main-menu,
+  .site-header {
+    overflow: hidden;
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    height: 2rem;
+    transition: transform .4s;
+    transform: translateY(-2rem);
+  }
+
+  &.scrolling-up {
+    .main-menu,
+    .site-header {
+      transform: translateY(0);
+    }
+  }
+
+  .main-menu {
+    margin-top: 0;
+    z-index: 69;
+  }
+
+  .site-header {
+    overflow: hidden;
+    z-index: 68;
+  }
+}
+
 .main-menu {
   background: $nav-bg;
   margin-top: -2rem;
@@ -563,7 +602,7 @@ input[type=image] {
   height: 2rem;
   justify-content: center;
   opacity: 0;
-  transform: translateY(55px);
+  transform: scale(1) translateY(55px);
   width: 2rem;
 
   &:active,
@@ -576,8 +615,8 @@ input[type=image] {
 .scroll-to-top {
   position: fixed;
   right: 1rem;
-  transition: opacity .6s, transform .6s;
   z-index: 115;
+  transition: opacity .6s, transform .6s;
 }
 
 .is-scrolled .google-cs-container {
@@ -587,10 +626,18 @@ input[type=image] {
 
 .is-scrolled .scroll-to-top {
   opacity: .5;
-  transform: translateY(0);
+  transform: scale(1) translateY(0);
 
   &:hover {
     opacity: 1;
+  }
+}
+
+.is-scrolled .scroll-to-top {
+  &.scrolling {
+    transform: scale(1.5);
+    opacity: 0;
+    transition: opacity .15s, transform .15s;
   }
 }
 
