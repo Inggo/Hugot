@@ -2,9 +2,9 @@ window.Velo = require('velocity-animate');
 
 window.axios = require('axios');
 
-window.onload = function () {
-  var lastScrollTop = 0;
+var lastScrollTop = 0;
 
+document.addEventListener("DOMContentLoaded", () => {
   var parallax = function () {
     if (window.innerWidth <= 500) {
       return;
@@ -68,6 +68,44 @@ window.onload = function () {
     );
   };
 
+  var loadLinks = function () {
+    var links = document.querySelectorAll('a:not([target="_blank"])');
+
+    for (var i = 0; i < links.length; i++) {
+      var link = links[i];
+      link.addEventListener('click', function (e) {
+        e.preventDefault();
+        var next = this.getAttribute('href');
+        this.classList.add('linked');
+        Velo(
+          this.parentNode,
+          {
+            scale: 1.1,
+            opacity: 0,
+          },
+          {
+            duration: 120,
+            complete: function () {
+              Velo(
+                document.querySelectorAll('article,main,.site-header .tagline,.site-header h2,.site-header .post-date'),
+                {
+                  scale: 1.1,
+                  opacity: 0
+                },
+                {
+                  duration: 400,
+                  complete: () => {
+                    window.location = next;
+                  }
+                }
+              );
+            }
+          }
+        );
+      });
+    };
+  };
+
   window.addEventListener("scroll", () => {
     scrollClass();
     parallax();
@@ -75,4 +113,10 @@ window.onload = function () {
 
   scrollClass();
   parallax();
-};
+
+  window.onload = function () {
+    scrollClass();
+    parallax();
+    loadLinks();
+  };
+});

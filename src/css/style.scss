@@ -54,6 +54,10 @@ a {
   &:hover {
     opacity: 1;
   }
+
+  &.linked {
+    transition-property: none;
+  }
 }
 
 article {

@@ -11,6 +11,7 @@
     {{ if eq (mod $index 4) 3 }}
       {{ partial "adsense.html" }}
     {{ end }}
+    <link rel="prefetch" href="{{ .Permalink }}" />
     {{ .Render "summary" }}
   {{ end }}
   {{ partial "paginator.html" . }}
