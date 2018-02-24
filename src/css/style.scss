@@ -9,6 +9,14 @@ html {
   }
   font-size: $size;
   min-width: 320px;
+
+  &.loaded {
+    overflow: auto;
+  }
+
+  &.loading {
+    overflow: hidden;
+  }
 }
 
 body {
@@ -55,8 +63,9 @@ a {
     opacity: 1;
   }
 
-  &.linked {
-    transition-property: none;
+  &.is-loading {
+    display: inline-block;
+    @include popout(1.1);
   }
 }
 
@@ -639,9 +648,7 @@ input[type=image] {
 
 .is-scrolled .scroll-to-top {
   &.scrolling {
-    transform: scale(1.5);
-    opacity: 0;
-    transition: opacity .15s, transform .15s;
+    @include popout(1.5);
   }
 }
 
@@ -656,4 +663,16 @@ input[type=image] {
   font-size: .675rem;
   margin: 0 0 .3375rem;
   text-align: center;
+}
+
+.page-loader {
+  &.loaded {
+    z-index: -1;
+  }
+  &.loading {
+    z-index: 51108;
+    * {
+      opacity: 0;
+    }
+  }
 }

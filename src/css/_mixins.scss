@@ -15,3 +15,9 @@
     @media only screen and (min-width: $break-lg) { @content; }
   }
 }
+
+@mixin popout($to) {
+  transform: scale($to);
+  opacity: 0 !important;
+  transition: opacity .15s, transform .15s;
+}
