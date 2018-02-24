@@ -23,7 +23,6 @@ function hidePageLoader() {
 function showPageLoader(callback) {
   var loader = document.getElementsByClassName('page-loader')[0];
   loader.classList.add('loading');
-  document.getElementsByTagName('html')[0].classList.add('loading');
   Velo(
     loader,
     {
@@ -116,6 +115,7 @@ function loadLinks () {
       this.classList.add('is-loading');
       setTimeout(function () {
         showPageLoader(function () {
+          document.getElementsByTagName('html')[0].classList.add('loading');
           window.location.href = next;
         });
       }, 120);
@@ -139,9 +139,9 @@ var elapsedTime;
 var dismissLoader, maxLoadingTimer;
 
 window.addEventListener('load', dismissLoader = function () { // when page loads
-    clearTimeout(maxloadingtimer);
+    clearTimeout(maxLoadingTimer);
     elapsedTime = new Date() - startTime;
-    var hidePageLoaderTimer = (elapsedTime > minLoadingTime)? 0 : minLoadingTime - elapsedTime;
+    var hidePageLoaderTimer = (elapsedTime > minLoadingTime) ? 0 : minLoadingTime - elapsedTime;
  
     setTimeout(function () {
       hidePageLoader();

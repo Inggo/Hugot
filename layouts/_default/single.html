@@ -78,10 +78,19 @@
         {{ partial "disqus.html" . }}
     </footer>
 
-
-    <section class="up-next container">
+    <nav class="container pagination">
         {{ with .PrevInSection }}
-        Up Next: <a class="next-page" href="{{.Permalink}}"> {{.Title}}</a>
+        <a class="next-page" href="{{ .Permalink }}">
+            <i class="icon-laquo"></i>
+            Previously: <b>{{ .Title }}</b>
+        </a>
+        {{ end }}
+
+        {{ with .NextInSection }}
+        <a class="prev-page" href="{{ .Permalink }}">
+            Up Next:  <b>{{ .Title }}</b>
+            <i class="icon-raquo"></i>
+        </a>
         {{ end }}
     </section>
 </article>
