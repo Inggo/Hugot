@@ -402,9 +402,16 @@ input[type=image] {
 }
 
 .post-summary-footer {
-  display: flex;
-  justify-content: space-between;
+  @include respond-to(gt-md) {
+    display: flex;
+    justify-content: space-between;
+  }
   margin: 1.35rem auto;
+}
+
+.continue-reading {
+  display: inline-block;
+  margin-bottom: 1.35rem;
 }
 
 .post-date {
@@ -587,20 +594,38 @@ input[type=image] {
   }
 }
 
-.post-comments {
-  margin: 60px auto;
-}
-
 .single-page {
   padding-top: 60px;
 }
 
 .pagination {
-  align-items: justify-content;
-  display: flex;
-  justify-content: space-between;
+  @include respond-to(gt-md) {
+    align-items: justify-content;
+    display: flex;
+    justify-content: space-between;
+  }
+
   margin-bottom: 60px;
   margin-top: 30px;
+  overflow: hidden;
+
+  a {
+    display: inline-block;
+    margin: 0 0 1.35rem;
+    text-align: left;
+
+    &.prev-page {
+      float: right;
+    }
+
+    &.next-page {
+      float: left;
+    }
+
+    b {
+      white-space: nowrap;
+    }
+  }
 }
 
 .google-cs-container {

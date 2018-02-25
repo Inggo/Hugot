@@ -1,9 +1,9 @@
+{{ $paginator := .Paginate (where .Data.Pages "Section" "reviews")  10 }}
 {{ partial "header.html" . }}
 
 <main>
   {{ .Content }}
 
-  {{ $paginator := .Paginate (where .Data.Pages "Section" "reviews")  10 }}
   {{ range $index, $element := $paginator.Pages }}
     {{ .Render "summary" }}
     {{ if eq (mod $index 5) 4 }}

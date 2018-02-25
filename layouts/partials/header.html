@@ -30,6 +30,12 @@
     {{ else }}
       {{ .Title }}
     {{ end }}
+
+    {{ if .IsNode }}
+    {{ if gt .Paginator.PageNumber 1 }}
+    - Page {{ .Paginator.PageNumber }}
+    {{ end }}
+    {{ end }}
   </title>
 
   <link rel="shortcut icon" href="{{ .Site.BaseURL }}{{ .Site.Params.favicon }}">
