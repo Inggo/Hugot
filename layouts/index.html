@@ -7,7 +7,7 @@
   {{ range $index, $element := $paginator.Pages }}
     {{ .Render "summary" }}
     {{ if eq (mod $index 5) 4 }}
-      {{ partial "adsense.html" }}
+      {{ partial "adsense.html" . }}
     {{ end }}
   {{ end }}
   <link rel="prefetch" href="{{ .Permalink }}" />
