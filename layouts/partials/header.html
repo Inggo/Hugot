@@ -22,9 +22,9 @@
   <meta name="description" content="{{ $.Scratch.Get "meta-desc" }}">
   <meta property="og:description" content="{{ $.Scratch.Get "meta-desc" }}">
   {{ if isset .Params "mediaimg" }}
-  <meta property="og:image" content="{{ replace .Params.mediaimg "/thumbs/" "/" }}">
-  {{ else if isset .Params "headerbg" }}
-  <meta property="og:image" content="{{ .Params.headerbg }}">
+  <meta property="og:image" content="{{ replace (print .Site.BaseURL (replace .Params.mediaimg "/thumbs/" "/")) "//" "/" }}">
+  {{ else }}
+  <meta property="og:image" content="{{ replace (print .Site.BaseURL .Params.headerbg) "//" "/" }}">
   {{ end }}
   <meta name="author" content="{{ .Params.author.name }}">
   {{ else }}
