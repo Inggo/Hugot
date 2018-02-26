@@ -725,3 +725,10 @@ input[type=image] {
 .icon-laquo {
   transform: translateX(.25rem);
 }
+
+.share-buttons {
+  display: flex;
+  > * {
+    margin: 0 5px 0 0 !important;
+  }
+}
