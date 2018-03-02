@@ -1,7 +1,5 @@
 window.Velo = require('velocity-animate');
 
-window.axios = require('axios');
-
 var lastScrollTop = 0;
 
 function hidePageLoader() {
@@ -131,14 +129,14 @@ window.addEventListener("scroll", () => {
 scrollClass();
 parallax();
 
-var minLoadingTime = 100;
-var maxLoadingTime = 3000;
+var minLoadingTime = 50;
+var maxLoadingTime = 10000;
  
 var startTime = new Date();
 var elapsedTime;
 var dismissLoader, maxLoadingTimer;
 
-window.addEventListener('load', dismissLoader = function () { // when page loads
+window.addEventListener('load', dismissLoader = function () {
     clearTimeout(maxLoadingTimer);
     elapsedTime = new Date() - startTime;
     var hidePageLoaderTimer = (elapsedTime > minLoadingTime) ? 0 : minLoadingTime - elapsedTime;
