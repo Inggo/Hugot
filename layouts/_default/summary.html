@@ -2,7 +2,7 @@
   <div class="post-summary-container">
     {{ if .Params.mediaimg }}
     <figure class="media-image">
-      <a href="{{ .Permalink }}">
+      <a href="{{ if .Params.extlink }}{{ .Params.extlink }}{{ else }}{{ .Permalink }}{{ end }}">
         <picture>
           <source media="(max-width: 350px)" srcset="{{ .Params.mediaimg }}">
           <source media="(max-width: 760px)" srcset="{{ replace .Params.mediaimg "/thumbs/" "/" }}">
@@ -15,7 +15,7 @@
       {{ partial "post-header.html" . }}
       {{ .Summary }}
       <footer class="post-summary-footer">
-        <a class="continue-reading" href="{{ .Permalink }}"><nobr>Continue Reading <i class="icon-raquo"></i></nobr></a>
+        <a class="continue-reading" href="{{ if .Params.extlink }}{{ .Params.extlink }}{{ else }}{{ .Permalink }}{{ end }}"><nobr>{{ if .Params.extlabel }}{{ .Params.extlabel }}{{ else }}Continue Reading{{ end }} <i class="icon-raquo"></i></nobr></a>
         <p class="post-author">by <b>{{ .Params.author.name }}</b></p>
       </footer>
     </section>

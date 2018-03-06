@@ -1,7 +1,7 @@
 <header class="post-header container">
   <p class="post-date">{{ .PublishDate.Format "January 2, 2006" }}</p>
   <h2 class="post-title">
-    <a href='{{ .Permalink }}'>
+    <a href="{{ if .Params.extlink }}{{ .Params.extlink }}{{ else }}{{ .Permalink }}{{ end }}">
       {{ .Title }}
       {{ if isset .Params "subtitle" }}
       <br/><span class="subtitle">{{ .Params.subtitle }}</span>

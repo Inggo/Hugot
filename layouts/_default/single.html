@@ -5,7 +5,10 @@
 <article class="post post-single">
     <section class="post-content container">
     {{ .Content }}
-
+    {{ if .Params.extlink }}
+    <a class="continue-reading" href="{{ .Params.extlink }}"><nobr>{{ if .Params.extlabel }}{{ .Params.extlabel }}{{ else }}Continue Reading{{ end }} <i class="icon-raquo"></i></nobr></a>
+    </section>
+    {{ else }}
     {{ if isset .Params "rating" }}
     <p class="rating rating-{{ .Params.stars }}">{{ .Params.rating }}</p>
     {{ end }}
@@ -58,6 +61,7 @@
         </section>
         <div class="post-aside-bg" style="background-image: url('{{ .Params.asidebg }}')"></div>
     </aside>
+    {{ end }}
     {{ end }}
 
     <footer class="post-footer container">
