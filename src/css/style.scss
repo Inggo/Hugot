@@ -477,6 +477,31 @@ input[type=image] {
     }
   }
 
+  &.rating-2-5 {
+    &::before {
+      background-position: 0 0;
+      height: 104px;
+      top: 16px;
+      width: 96px;
+      left: -60px;
+      transform: scaleX(-1);
+    }
+
+    &::after {
+      background-image: url('~/img/thumbs.png');
+      background-repeat: no-repeat;
+      content: '';
+      left: 60px;
+      margin: 0 auto;
+      position: absolute;
+      right: 0;
+      background-position: -96px 0;
+      height: 104px;
+      top: 48px;
+      width: 96px;
+    }
+  }
+
   &.rating-2 {
     &::before {
       background-position: 0 0;
