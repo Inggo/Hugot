@@ -17,7 +17,7 @@ mediaimg = ""
 headerbg = ""
 asidebg = ""
 [author]
-    name = "Inggo Espinosa"
+    name = "Inggo E."
     uri = "https://inggo.xyz"
 draft = true
 +++
