@@ -130,6 +130,18 @@ ul {
   }
 }
 
+ul {
+  li {
+    list-style: disc;
+  }
+}
+
+ol {
+  li {
+    list-style: decimal;
+  }
+}
+
 button,
 input[type=image] {
   &:active,
