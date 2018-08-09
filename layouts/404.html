@@ -1,0 +1,16 @@
+{{ partial "header.html" . }}
+
+<main>
+  <article class="single-page container container-404">
+    <p>The page you are looking for either:</p>
+    <ul>
+      <li>Is incorrect;</li>
+      <li>Does not exist <i>yet</i>; or</li>
+      <li>Does not exist at all.</li>
+    </ul>
+    <p><a href="javascript:history.go(-1)">Click here</a> to go back where you came from or 
+      <a href="{{ "/" | relURL }}">click here</a> to go to the homepage.</p>
+  </article>
+</main>
+
+{{ partial "footer.html" . }}
