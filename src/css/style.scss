@@ -781,9 +781,15 @@ input[type=image] {
 }
 
 .container-404 {
+  p, ul {
+    padding: 0 4rem;
+  }
+
   img {
     display: block;
     margin: -1.35rem auto 1rem;
     max-width: 100%;
   }
+
+  padding-bottom: 4rem;
 }
