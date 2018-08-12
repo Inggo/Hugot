@@ -779,3 +779,11 @@ input[type=image] {
     margin: 0 5px 0 0 !important;
   }
 }
+
+.container-404 {
+  img {
+    display: block;
+    margin: -1.35rem auto 1rem;
+    max-width: 100%;
+  }
+}
