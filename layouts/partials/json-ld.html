@@ -15,7 +15,7 @@
   },
   "reviewRating": {
     "@type": "Rating",
-    "ratingValue": "{{ if isset .Params.reviewdata "value" }}{{ .Params.reviewdata.value }}{{ else }}{{ .Params.stars }}{{ end }}"
+    "ratingValue": "{{ if isset .Params.reviewdata "value" }}{{ .Params.reviewdata.value }}{{ else }}{{ if eq .Params.stars "2-5"}}3{{ else if eq .Params.stars "3" }}4{{ else if eq .Params.stars "4" }}4.5{{ else if eq .Params.stars "5" }}5{{ else }}{{ .Params.stars }}{{ end }}{{ end }}"
   },
   "name": "{{ .Title }} {{ .Params.subtitle }} Review",
   "image": "{{ replace (print .Site.BaseURL (replace .Params.mediaimg "/thumbs/" "/")) "//" "/" }}",
