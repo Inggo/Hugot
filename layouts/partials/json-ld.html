@@ -1,0 +1,31 @@
+{{ if .IsPage }}
+{{ if eq .Type "reviews" }}
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org/",
+  "@type": "Review",
+  "itemReviewed": {
+    "@type": "{{ if isset .Params.reviewdata "type" }}{{ .Params.reviewdata.type }}{{ else }}Restaurant{{ end }}",
+    "name": "{{ .Title }}",
+    "address": "{{ .Params.location }}",
+    "sameAs": "{{ if isset .Params.reviewdata "url" }}{{ .Params.reviewdata.url }}{{ else }}{{ .Params.map }}{{ end }}",
+    "image": "{{ replace (print .Site.BaseURL (replace .Params.mediaimg "/thumbs/" "/")) "//" "/" }}",
+    "priceRange": "{{ .Params.budget }}"{{ if isset .Params.reviewdata "cuisine" }},
+    "servesCuisine": "{{ .Params.reviewdata.cuisine }}"{{ end }}
+  },
+  "reviewRating": {
+    "@type": "Rating",
+    "ratingValue": "{{ if isset .Params.reviewdata "value" }}{{ .Params.reviewdata.value }}{{ else }}{{ .Params.stars }}{{ end }}"
+  },
+  "name": "{{ .Title }} {{ .Params.subtitle }} Review",
+  "image": "{{ replace (print .Site.BaseURL (replace .Params.mediaimg "/thumbs/" "/")) "//" "/" }}",
+  "author": {
+    "@type": "Person",
+    "name": "{{ .Params.author.name }}",
+    "sameAs": "{{ .Params.author.uri }}"
+  },
+  "datePublished": "{{ .Date.Format "2006-01-02" }}"
+}
+</script>
+{{ end }}
+{{ end }}
