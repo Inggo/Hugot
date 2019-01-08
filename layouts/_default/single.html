@@ -1,5 +1,5 @@
-{{ $.Scratch.Add "single" true }}
-{{ $.Scratch.Add "meta-desc" (.Summary | truncate 255) }}
+{{ $.Scratch.Set "single" true }}
+{{ $.Scratch.Set "meta-desc" (.Summary | truncate 255) }}
 {{ partial "header.html" . }}
 
 <article class="post post-single">
