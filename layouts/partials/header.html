@@ -193,7 +193,7 @@
         <p class="tagline">{{ .Site.Params.tagline }}</p>
       {{ end }}
     </div>
-    {{ if eq .Type "reviews" }}
+    {{ if and (eq .Type "reviews") .IsPage }}
     <div class="site-header-bg" style="background-image: url('{{ .Params.headerbg }}')"></div>
     {{ else }}
     {{ $reviews := ($.Site.GetPage "section" "reviews").Pages }}

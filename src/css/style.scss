@@ -687,6 +687,15 @@ input[type=image] {
   }
 }
 
+.kofi-container {
+  opacity: 1;
+  top: 1rem;
+}
+
+.google-cs-container + .kofi-container {
+  top: 2.5rem;
+}
+
 .scroll-to-top {
   background: $secondary;
   border: 0;
@@ -707,6 +716,7 @@ input[type=image] {
 }
 
 .google-cs-container,
+.kofi-container,
 .scroll-to-top {
   position: fixed;
   right: 1rem;
@@ -714,9 +724,12 @@ input[type=image] {
   transition: opacity .6s, transform .6s;
 }
 
-.is-scrolled .google-cs-container {
-  opacity: 0;
-  transform: translateY(-55px);
+.is-scrolled {
+  .google-cs-container,
+  .kofi-container {
+    opacity: 0;
+    transform: translateY(-55px);
+  } 
 }
 
 .is-scrolled .scroll-to-top {

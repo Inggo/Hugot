@@ -3,7 +3,7 @@
 <nav class="main-menu">
   <ul class="navigation container">
     {{ range .Site.Menus.main }}
-    <li class="{{ if or ($currentPage.HasMenuCurrent "main" .) ($currentPage.IsMenuCurrent "main" .) }}active{{ end }}">
+    <li class="{{ if $currentPage.HasMenuCurrent "main" . }}active{{ end }}">
       <a href="{{ .URL }}">{{ .Pre }}<span>{{ .Name }}</span></a>
     </li>
     {{ end }}

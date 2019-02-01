@@ -1,4 +1,4 @@
-{{ $paginator := .Paginate (where .Data.Pages "Section" "reviews")  10 }}
+{{ $paginator := .Paginate .Data.Pages 10 }}
 {{ partial "header.html" . }}
 
 <main>

@@ -15,6 +15,12 @@
 </div>
 {{ end }}
 
+{{ if .Site.Params.kofiId }}
+<div class="kofi-container">
+  <script type='text/javascript' src='https://ko-fi.com/widgets/widget_2.js'></script><script type='text/javascript'>kofiwidget2.init('{{ if .Site.Params.kofiText }}{{ $.Site.Params.kofiText }}{{ else }}Support Me on Ko-fi{{ end }}', '{{ if .Site.Params.kofiColor }}{{ $.Site.Params.kofiColor }}{{ else }}#46b798{{ end }}', '{{ $.Site.Params.kofiId }}');kofiwidget2.draw();</script>
+</div>
+{{ end }}
+
 <button class="scroll-to-top" type="button">
   <i class="icon-up"></i>
 </button>
