@@ -4,7 +4,11 @@
 
 <article class="post post-single">
     <section class="post-content container">
+    {{ if $.Site.Params.cdnUrl }}
+    {{ safeHTML (replace .Content "<img src=\"/img/" (print "<img src=\"" $.Site.Params.cdnUrl)) }}
+    {{ else }}
     {{ .Content }}
+    {{ end }}
     {{ if .Params.extlink }}
     <a class="continue-reading" href="{{ .Params.extlink }}"><nobr>{{ if .Params.extlabel }}{{ .Params.extlabel }}{{ else }}Continue Reading{{ end }} <i class="icon-raquo"></i></nobr></a>
     </section>
@@ -59,7 +63,7 @@
             </p>
             {{ end }}
         </section>
-        <div class="post-aside-bg" style="background-image: url('{{ .Params.asidebg }}')"></div>
+        <div class="post-aside-bg" style="background-image: url('{{ if $.Site.Params.cdnUrl }}{{ replace .Params.asidebg "/img/" (print $.Site.Params.cdnUrl "thumbs/") }}{{ else }}{{ replace .Params.asidebg "/img/" "/img/thumbs/" }}{{ end }}')" data-fullbg="{{ if $.Site.Params.cdnUrl }}{{ replace .Params.asidebg "/img/" $.Site.Params.cdnUrl }}{{ else }}{{ .Params.asidebg }}{{ end }}"></div>
     </aside>
     {{ end }}
     {{ end }}

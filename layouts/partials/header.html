@@ -22,9 +22,17 @@
   <meta name="description" content="{{ $.Scratch.Get "meta-desc" }}">
   <meta property="og:description" content="{{ $.Scratch.Get "meta-desc" }}">
   {{ if isset .Params "mediaimg" }}
+  {{ if $.Site.Params.cdnUrl }}
+  <meta property="og:image" content="{{ replace .Params.mediaimg "/img/thumbs/" $.Site.Params.cdnUrl }}">
+  {{ else }}
   <meta property="og:image" content="{{ replace (print .Site.BaseURL (replace .Params.mediaimg "/thumbs/" "/")) "//" "/" }}">
+  {{ end }}
+  {{ else }}
+  {{ if $.Site.Params.cdnUrl }}
+  <meta property="og:image" content="{{ replace .Params.mediaimg "/img/" $.Site.Params.cdnUrl }}">
   {{ else }}
   <meta property="og:image" content="{{ replace (print .Site.BaseURL .Params.headerbg) "//" "/" }}">
+  {{ end }}
   {{ end }}
   <meta name="author" content="{{ .Params.author.name }}">
   {{ else }}
@@ -133,11 +141,11 @@
       {{ end }}
     </div>
     {{ if and (eq .Type "reviews") .IsPage }}
-    <div class="site-header-bg" style="background-image: url('{{ replace .Params.headerbg "/img/" "/img/thumbs/" }}')" data-fullbg="{{ .Params.headerbg }}"></div>
+    <div class="site-header-bg" style="background-image: url('{{ if $.Site.Params.cdnUrl }}{{ replace .Params.headerbg "/img/" (print $.Site.Params.cdnUrl "thumbs/") }}{{ else }}{{ replace .Params.headerbg "/img/" "/img/thumbs/" }}{{ end }}')" data-fullbg="{{ if $.Site.Params.cdnUrl }}{{ replace .Params.headerbg "/img/" $.Site.Params.cdnUrl }}{{ else }}{{ .Params.headerbg }}{{ end }}"></div>
     {{ else }}
     {{ $reviews := ($.Site.GetPage "section" "reviews").Pages }}
     {{ range first 1 $reviews }}
-    <div class="site-header-bg" style="background-image: url('{{ replace .Params.headerbg "/img/" "/img/thumbs/" }}')" data-fullbg="{{ .Params.headerbg }}"></div>
+    <div class="site-header-bg" style="background-image: url('{{ if $.Site.Params.cdnUrl }}{{ replace .Params.headerbg "/img/" (print $.Site.Params.cdnUrl "thumbs/") }}{{ else }}{{ replace .Params.headerbg "/img/" "/img/thumbs/" }}{{ end }}')" data-fullbg="{{ if $.Site.Params.cdnUrl }}{{ replace .Params.headerbg "/img/" $.Site.Params.cdnUrl }}{{ else }}{{ .Params.headerbg }}{{ end }}"></div>
     {{ end }}
     {{ end }}
   </header>

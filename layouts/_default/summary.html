@@ -4,9 +4,15 @@
     <figure class="media-image">
       <a href="{{ if .Params.extlink }}{{ .Params.extlink }}{{ else }}{{ .Permalink }}{{ end }}">
         <picture>
+        {{ if $.Site.Params.cdnUrl }}
+          <source media="(max-width: 500px)" srcset="{{ replace .Params.mediaimg "/img/" $.Site.Params.cdnUrl }}">
+          <source media="(min-width: 501px) and (max-width: 760px)" srcset="{{ replace .Params.mediaimg "/img/thumbs/" $.Site.Params.cdnUrl }}">
+          <img src="{{ replace .Params.mediaimg "/img/" $.Site.Params.cdnUrl }}" alt="{{ .Title }}"/>
+        {{ else }}
           <source media="(max-width: 500px)" srcset="{{ .Params.mediaimg }}">
           <source media="(min-width: 501px) and (max-width: 760px)" srcset="{{ replace .Params.mediaimg "/thumbs/" "/" }}">
           <img src="{{ .Params.mediaimg }}" alt="{{ .Title }}"/>
+        {{ end }}
         </picture>
       </a>
     </figure>

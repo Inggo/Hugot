@@ -9,7 +9,7 @@
     "name": "{{ .Title }}",
     "address": "{{ .Params.location }}",
     "sameAs": "{{ with .Params.reviewdata.url }}{{ . }}{{ else }}{{ .Params.map }}{{ end }}",
-    "image": "{{ replace (print .Site.BaseURL (replace .Params.mediaimg "/thumbs/" "/")) "//" "/" }}",
+    "image": "{{ if $.Site.Params.cdnUrl }}{{ replace .Params.mediaimg "/img/thumbs/" $.Site.Params.cdnUrl }}{{ else }}{{ replace (print .Site.BaseURL (replace .Params.mediaimg "/thumbs/" "/")) "//" "/" }}{{ end }}",
     "priceRange": "{{ .Params.budget }}"{{ with .Params.reviewdata.cuisine }},
     "servesCuisine": "{{ . }}"{{ end }}
   },
@@ -19,7 +19,7 @@
     "ratingValue": "{{ replace .Params.stars "-" "." }}"
   },
   "name": "{{ .Title }} {{ .Params.subtitle }} Review",
-  "image": "{{ replace (print .Site.BaseURL (replace .Params.mediaimg "/thumbs/" "/")) "//" "/" }}",
+  "image": "{{ if $.Site.Params.cdnUrl }}{{ replace .Params.mediaimg "/img/thumbs/" $.Site.Params.cdnUrl }}{{ else }}{{ replace (print .Site.BaseURL (replace .Params.mediaimg "/thumbs/" "/")) "//" "/" }}{{ end }}",
   "author": {
     "@type": "Person",
     "name": "{{ .Params.author.name }}",

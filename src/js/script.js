@@ -126,14 +126,23 @@ window.addEventListener("scroll", () => {
   parallax();
 }, false);
 
-var setHeaderBg = function () {
+var setFullBg = function (elem) {
+  elem.style.backgroundImage = 'url(' + elem.getAttribute('data-fullbg') + ')'; 
+}
+
+var setParallaxBg = function () {
   if (window.innerWidth > 500) {
     var headerBg = document.getElementsByClassName('site-header-bg')[0];
-    headerBg.style.backgroundImage = 'url(' + headerBg.getAttribute('data-fullbg') + ')';
+    setFullBg(headerBg);
+
+    var postAsides = document.getElementsByClassName('post-aside-bg');
+    for (var i = 0; i < postAsides.length; i++) {
+      setFullBg(postAsides[i]);
+    }
   }
 }
 
-setHeaderBg();
+setParallaxBg();
 scrollClass();
 parallax();
 
