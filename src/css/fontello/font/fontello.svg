@@ -1,11 +1,13 @@
 <?xml version="1.0" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
 <svg xmlns="http://www.w3.org/2000/svg">
-<metadata>Copyright (C) 2018 by original authors @ fontello.com</metadata>
+<metadata>Copyright (C) 2019 by original authors @ fontello.com</metadata>
 <defs>
 <font id="fontello" horiz-adv-x="1000" >
 <font-face font-family="fontello" font-weight="400" font-stretch="normal" units-per-em="1000" ascent="850" descent="-150" />
 <missing-glyph horiz-adv-x="1000" />
+<glyph glyph-name="lightbulb" unicode="&#xe800;" d="M390 663q64 0 109-45t46-110q0-11-7-18t-19-8-19 8-7 18q0 43-30 73t-73 30q-25 0-25 26t25 26z m0-860q-21 0-36 16t-15 37l-104 0q-21 0-37 15t-15 37l0 157q0 31-23 76t-90 142q-70 97-70 224 0 161 114 276t276 114 276-114 115-276q0-121-71-224-67-96-89-140t-22-78l0-157q0-21-15-37t-36-15l-105 0q0-22-16-37t-37-16z m105 156l0 53-209 0 0-53 209 0z m130 383q53 76 53 165 0 118-85 202t-203 84q-117 0-202-84t-84-202q0-87 52-164 107-155 124-227l59 0 0 105q0 21 15 36t36 15 37-15 16-36l0-105 57 0q16 71 125 226z" horiz-adv-x="781" />
+
 <glyph glyph-name="up" unicode="&#xe802;" d="M939 107l-92-92q-11-10-26-10t-25 10l-296 297-296-297q-11-10-25-10t-25 10l-93 92q-11 11-11 26t11 25l414 414q11 10 25 10t25-10l414-414q11-11 11-25t-11-26z" horiz-adv-x="1000" />
 
 <glyph glyph-name="spin" unicode="&#xe834;" d="M498 850c-114 0-228-39-320-116l0 0c173 140 428 130 588-31 134-134 164-332 89-495-10-29-5-50 12-68 21-20 61-23 84 0 3 3 12 15 15 24 71 180 33 393-112 539-99 98-228 147-356 147z m-409-274c-14 0-29-5-39-16-3-3-13-15-15-24-71-180-34-393 112-539 185-185 479-195 676-31l0 0c-173-140-428-130-589 31-134 134-163 333-89 495 11 29 6 50-12 68-11 11-27 17-44 16z" horiz-adv-x="1001" />

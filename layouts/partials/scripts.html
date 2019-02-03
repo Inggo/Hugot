@@ -34,3 +34,12 @@
   })();
 </script>
 {{ end }}
+<script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
+<script type="text/javascript">
+if (!Cookies.get('consent')) {
+  document.write('<div class="consent-cookies"><p>This blog uses cookies to ensure your best experience. <a href="http://cookiesandyou.com/" target="_blank">Learn more</a></p><button onclick="javascript:consentCookies();">Accept</buton></div>')
+}
+</script>
+<button class="light-switch" onclick="javascript:toggleColors()">
+  <i class="icon-lightbulb"></i>
+</button>

@@ -29,6 +29,12 @@
       "css": "laquo",
       "code": 61696,
       "src": "fontawesome"
+    },
+    {
+      "uid": "12d16dda691bda304e3b57d7bc0de5a9",
+      "css": "lightbulb",
+      "code": 59392,
+      "src": "typicons"
     }
   ]
 }

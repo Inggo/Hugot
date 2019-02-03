@@ -14,8 +14,14 @@ $background: $white;
 $primary: $black;
 $primary-inverted: invert($primary);
 $secondary: $pink;
+$secondary-inverted: lighten($secondary, 10%);
 $border: lighten($pink, 33%);
 $footer-bg: darken($white, 3.33%);
+
+$bg-inverted: lighten($black, 2%);
+$footer-bg-inverted: lighten($black, 6%);
+
+$border-inverted: darken($pink, 33%);
 
 $header-bg: $black;
 $header-color: $white;

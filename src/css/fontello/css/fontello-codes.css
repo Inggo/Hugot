@@ -1,4 +1,5 @@
 
+.icon-lightbulb:before { content: '\e800'; } /* '' */
 .icon-up:before { content: '\e802'; } /* '' */
 .icon-spin:before { content: '\e834'; } /* '' */
 .icon-laquo:before { content: '\f100'; } /* '' */
