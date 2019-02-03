@@ -10,13 +10,7 @@ html {
   font-size: $size;
   min-width: 320px;
 
-  &.loaded {
-    overflow: auto;
-  }
-
-  &.loading {
-    overflow: hidden;
-  }
+  overflow: auto;
 }
 
 body {
@@ -370,7 +364,7 @@ input[type=image] {
 }
 
 .media-image {
-  margin: 2rem -30px -5%;
+  margin: 0 -30px calc(-10% + 1rem);
   position: relative;
   z-index: 12;
 
@@ -378,16 +372,20 @@ input[type=image] {
   &::after {
     background: $background;
     content: '';
-    height: 16px;
     position: absolute;
     width: 100%;
   }
 
   &::before {
     top: 0;
+
+    @include respond-to(sm) {
+      height: 10%;
+    }
   }
 
   &::after {
+    height: 10%;
     bottom: 0;
   }
 
@@ -397,6 +395,10 @@ input[type=image] {
     &:hover {
       opacity: .9;
     }
+  }
+
+  @include respond-to(gt-md) {
+    margin: 2rem -30px -10%;
   }
 }
 

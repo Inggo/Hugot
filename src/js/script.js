@@ -2,35 +2,35 @@ window.Velo = require('velocity-animate');
 
 var lastScrollTop = 0;
 
-function hidePageLoader() {
-  var loader = document.getElementsByClassName('page-loader')[0];
-  document.getElementsByTagName('html')[0].classList.add('loaded');
-  Velo(
-    loader,
-    {
-      opacity: 0
-    },
-    {
-      complete: () => {
-        loader.classList.add('loaded');
-      }
-    }
-  );
-}
+// function hidePageLoader() {
+//   var loader = document.getElementsByClassName('page-loader')[0];
+//   document.getElementsByTagName('html')[0].classList.add('loaded');
+//   Velo(
+//     loader,
+//     {
+//       opacity: 0
+//     },
+//     {
+//       complete: () => {
+//         loader.classList.add('loaded');
+//       }
+//     }
+//   );
+// }
 
-function showPageLoader(callback) {
-  var loader = document.getElementsByClassName('page-loader')[0];
-  loader.classList.add('loading');
-  Velo(
-    loader,
-    {
-      opacity: 1
-    },
-    {
-      complete: callback
-    }
-  );
-}
+// function showPageLoader(callback) {
+//   var loader = document.getElementsByClassName('page-loader')[0];
+//   loader.classList.add('loading');
+//   Velo(
+//     loader,
+//     {
+//       opacity: 1
+//     },
+//     {
+//       complete: callback
+//     }
+//   );
+// }
 
 function scrollToTop(duration, callback) {
   if (!duration) {
@@ -102,57 +102,65 @@ document.getElementsByClassName('scroll-to-top')[0].addEventListener('click', fu
   });
 });
 
-function loadLinks () {
-  var links = document.querySelectorAll('a:not([target="_blank"])');
+// function loadLinks () {
+//   var links = document.querySelectorAll('a:not([target="_blank"])');
 
-  for (var i = 0; i < links.length; i++) {
-    var link = links[i];
-    link.addEventListener('click', function (e) {
-      e.preventDefault();
-      var next = this.getAttribute('href');
-      this.classList.add('is-loading');
-      setTimeout(function () {
-        showPageLoader(function () {
-          document.getElementsByTagName('html')[0].classList.add('loading');
-          window.location.href = next;
-        });
-      }, 120);
-    });
-  }
-}
+//   for (var i = 0; i < links.length; i++) {
+//     var link = links[i];
+//     link.addEventListener('click', function (e) {
+//       e.preventDefault();
+//       var next = this.getAttribute('href');
+//       this.classList.add('is-loading');
+//       setTimeout(function () {
+//         showPageLoader(function () {
+//           document.getElementsByTagName('html')[0].classList.add('loading');
+//           window.location.href = next;
+//         });
+//       }, 120);
+//     });
+//   }
+// }
 
 window.addEventListener("scroll", () => {
   scrollClass();
   parallax();
 }, false);
 
+var setHeaderBg = function () {
+  if (window.innerWidth > 500) {
+    var headerBg = document.getElementsByClassName('site-header-bg')[0];
+    headerBg.style.backgroundImage = 'url(' + headerBg.getAttribute('data-fullbg') + ')';
+  }
+}
+
+setHeaderBg();
 scrollClass();
 parallax();
 
-var minLoadingTime = 50;
-var maxLoadingTime = 10000;
+// var minLoadingTime = 50;
+// var maxLoadingTime = 10000;
  
-var startTime = new Date();
-var elapsedTime;
-var dismissLoader, maxLoadingTimer;
+// var startTime = new Date();
+// var elapsedTime;
+// var dismissLoader, maxLoadingTimer;
 
-window.addEventListener('load', dismissLoader = function () {
-    clearTimeout(maxLoadingTimer);
-    elapsedTime = new Date() - startTime;
-    var hidePageLoaderTimer = (elapsedTime > minLoadingTime) ? 0 : minLoadingTime - elapsedTime;
+// window.addEventListener('load', dismissLoader = function () {
+//     clearTimeout(maxLoadingTimer);
+//     elapsedTime = new Date() - startTime;
+//     var hidePageLoaderTimer = (elapsedTime > minLoadingTime) ? 0 : minLoadingTime - elapsedTime;
  
-    setTimeout(function () {
-      hidePageLoader();
-    }, hidePageLoaderTimer);
-}, false);
+//     setTimeout(function () {
+//       hidePageLoader();
+//     }, hidePageLoaderTimer);
+// }, false);
  
-maxLoadingTimer = setTimeout(function(){
-    window.removeEventListener('load', dismissLoader, false);
-    hidePageLoader();
-}, maxLoadingTime);
+// maxLoadingTimer = setTimeout(function(){
+//     window.removeEventListener('load', dismissLoader, false);
+//     hidePageLoader();
+// }, maxLoadingTime);
 
-window.addEventListener('load', () => {
-  scrollClass();
-  parallax();
-  loadLinks();
-});
+// window.addEventListener('load', () => {
+//   scrollClass();
+//   parallax();
+//   // loadLinks();
+// });

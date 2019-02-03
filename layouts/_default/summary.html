@@ -4,8 +4,8 @@
     <figure class="media-image">
       <a href="{{ if .Params.extlink }}{{ .Params.extlink }}{{ else }}{{ .Permalink }}{{ end }}">
         <picture>
-          <source media="(max-width: 350px)" srcset="{{ .Params.mediaimg }}">
-          <source media="(max-width: 760px)" srcset="{{ replace .Params.mediaimg "/thumbs/" "/" }}">
+          <source media="(max-width: 500px)" srcset="{{ .Params.mediaimg }}">
+          <source media="(min-width: 501px) and (max-width: 760px)" srcset="{{ replace .Params.mediaimg "/thumbs/" "/" }}">
           <img src="{{ .Params.mediaimg }}" alt="{{ .Title }}"/>
         </picture>
       </a>
