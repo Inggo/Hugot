@@ -374,13 +374,21 @@ input[type=image] {
   position: relative;
   z-index: 12;
 
+  &::before,
   &::after {
     background: $background;
-    bottom: 0;
     content: '';
-    height: 5%;
+    height: 16px;
     position: absolute;
     width: 100%;
+  }
+
+  &::before {
+    top: 0;
+  }
+
+  &::after {
+    bottom: 0;
   }
 
   a {
@@ -892,6 +900,13 @@ input[type=image] {
       &::after {
         background: $bg-inverted;
       }
+    }
+  }
+
+  .media-image {
+    &::before,
+    &::after {
+      background: $bg-inverted;
     }
   }
 
