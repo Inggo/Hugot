@@ -175,6 +175,14 @@ document.getElementsByClassName('scroll-to-top')[0].addEventListener('click', fu
   });
 });
 
+// Get all of the images that are marked up to lazy load
+const images = document.querySelectorAll('.js-lazy-image');
+const config = {
+  // If the image gets within 50px in the Y axis, start the download.
+  rootMargin: '50px 0px',
+  threshold: 0.01
+};
+
 // function loadLinks () {
 //   var links = document.querySelectorAll('a:not([target="_blank"])');
 
@@ -200,18 +208,22 @@ window.addEventListener("scroll", () => {
 }, false);
 
 var setFullBg = function (elem) {
-  elem.style.backgroundImage = 'url(' + elem.getAttribute('data-fullbg') + ')'; 
+  var img = new Image()
+    , src = elem.getAttribute('data-fullbg');
+  img.onload = function() {
+    elem.style.backgroundImage = 'url(' + elem.getAttribute('data-fullbg') + ')'; 
+  }
+  img.src = src;
 }
 
-var setParallaxBg = function () {
-  if (window.innerWidth > 500) {
-    var headerBg = document.getElementsByClassName('site-header-bg')[0];
-    setFullBg(headerBg);
 
-    var postAsides = document.getElementsByClassName('post-aside-bg');
-    for (var i = 0; i < postAsides.length; i++) {
-      setFullBg(postAsides[i]);
-    }
+var setParallaxBg = function () {
+  var headerBg = document.getElementsByClassName('site-header-bg')[0];
+  setFullBg(headerBg);
+
+  var postAsides = document.getElementsByClassName('post-aside-bg');
+  for (var i = 0; i < postAsides.length; i++) {
+    setFullBg(postAsides[i]);
   }
 }
 
@@ -246,3 +258,11 @@ parallax();
 //   parallax();
 //   // loadLinks();
 // });
+
+(function () {
+  var myLazyLoad = new LazyLoad({
+    elements_selector: "picture > img",
+    threshold: 0
+  });
+}());
+

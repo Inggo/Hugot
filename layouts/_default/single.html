@@ -63,7 +63,11 @@
             </p>
             {{ end }}
         </section>
-        <div class="post-aside-bg" style="background-image: url('{{ if $.Site.Params.cdnUrl }}{{ replace .Params.asidebg "/img/" (print $.Site.Params.cdnUrl "thumbs/") }}{{ else }}{{ replace .Params.asidebg "/img/" "/img/thumbs/" }}{{ end }}')" data-fullbg="{{ if $.Site.Params.cdnUrl }}{{ replace .Params.asidebg "/img/" $.Site.Params.cdnUrl }}{{ else }}{{ .Params.asidebg }}{{ end }}"></div>
+        {{ if $.Site.Params.cdnUrl }}
+        <div class="post-aside-bg" style="background-image: url('{{ replace .Params.asidebg "/img/" (print $.Site.Params.cdnUrl "w_35/") }}')" data-fullbg="{{ replace .Params.asidebg "/img/" $.Site.Params.cdnUrl }}"></div>
+        {{ else }}
+        <div class="post-aside-bg" style="background-image: url('{{ replace .Params.asidebg "/img/" "/img/thumbs/" }}')" data-fullbg="{{ .Params.asidebg }}"></div>
+        {{ end }}
     </aside>
     {{ end }}
     {{ end }}

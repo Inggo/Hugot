@@ -16,7 +16,7 @@ body {
   background: $background;
   font-family: $font;
 
-  @include respond-to(gt-md) {
+  @include respond-to(gt-sm) {
     transition: background .4s, color .4s;
   }
 }
@@ -103,6 +103,14 @@ img {
   margin: 0 auto;
   max-width: $img-max;
   width: 100%;
+}
+
+@include respond-to(gt-sm) {
+  picture {
+    img {
+      min-width: 350px;
+    }
+  }
 }
 
 p,
@@ -365,6 +373,9 @@ input[type=image] {
   margin: 0 -30px calc(-10% + 1rem);
   position: relative;
   z-index: 12;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
 
   &::before,
   &::after {
@@ -372,6 +383,7 @@ input[type=image] {
     content: '';
     position: absolute;
     width: 100%;
+    z-index: 22;
   }
 
   &::before {
@@ -384,7 +396,7 @@ input[type=image] {
 
   &::after {
     height: 10%;
-    bottom: 0;
+    bottom: -1px;
   }
 
   a {
@@ -395,12 +407,12 @@ input[type=image] {
     }
   }
 
-  @include respond-to(gt-md) {
+  @include respond-to(gt-sm) {
     margin: 2rem -30px -10%;
   }
 }
 
-@include respond-to(gt-md) {
+@include respond-to(gt-sm) {
   .post-summmary-container {
     clear: both;
   }
@@ -428,7 +440,7 @@ input[type=image] {
 }
 
 .post-summary-footer {
-  @include respond-to(gt-md) {
+  @include respond-to(gt-sm) {
     display: flex;
     justify-content: space-between;
   }
@@ -658,7 +670,7 @@ input[type=image] {
 }
 
 .pagination {
-  @include respond-to(gt-md) {
+  @include respond-to(gt-sm) {
     align-items: justify-content;
     display: flex;
     justify-content: space-between;
@@ -918,7 +930,7 @@ input[type=image] {
   color: $primary-inverted;
   background: $bg-inverted; 
 
-  .post-body,
+  main,
   .site-footer {
     a {
       color: $secondary-inverted;
@@ -938,4 +950,23 @@ input[type=image] {
   .site-footer {
     background: $footer-bg-inverted;
   }
+}
+
+picture {
+  img {
+    position: relative;
+    z-index: 1;
+    opacity: 0;
+  }
+  img:not(.initial) {
+    transition: opacity .4s;
+  }
+  img.initial,
+  img.loaded,
+  img.error {
+    opacity: 1;
+  }
+  img:not([src]) {
+    visibility: hidden;
+  }  
 }
