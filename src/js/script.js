@@ -216,11 +216,7 @@ var setFullBg = function (elem) {
   img.src = src;
 }
 
-
 var setParallaxBg = function () {
-  var headerBg = document.getElementsByClassName('site-header-bg')[0];
-  setFullBg(headerBg);
-
   var postAsides = document.getElementsByClassName('post-aside-bg');
   for (var i = 0; i < postAsides.length; i++) {
     setFullBg(postAsides[i]);

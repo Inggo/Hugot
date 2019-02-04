@@ -156,6 +156,15 @@
     {{ end }}
     {{ end }}
     {{ end }}
+    <script type="text/javascript">
+    var headerBg = document.getElementsByClassName('site-header-bg')[0];
+    var img = new Image()
+      , src = headerBg.getAttribute('data-fullbg');
+    img.onload = function() {
+      headerBg.style.backgroundImage = 'url(' + headerBg.getAttribute('data-fullbg') + ')'; 
+    }
+    img.src = src;
+    </script>
     {{ if $.Site.Params.cdnUrl }}
     <script src="https://cdn.polyfill.io/v2/polyfill.min.js?features=IntersectionObserver"></script>
     {{ end }}
