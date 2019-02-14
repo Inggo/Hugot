@@ -22,13 +22,13 @@
   <meta name="description" content="{{ $.Scratch.Get "meta-desc" }}">
   <meta property="og:description" content="{{ $.Scratch.Get "meta-desc" }}">
   {{ if isset .Params "mediaimg" }}
-  {{ if $.Site.Params.cdnUrl }}
+  {{ if (and (not (eq (printf "%v" $.Site.BaseURL) "http://localhost:1313/")) $.Site.Params.cdnUrl) }}
   <meta property="og:image" content="{{ replace .Params.mediaimg "/img/thumbs/" $.Site.Params.cdnUrl }}">
   {{ else }}
   <meta property="og:image" content="{{ replace (print .Site.BaseURL (replace .Params.mediaimg "/thumbs/" "/")) "//" "/" }}">
   {{ end }}
   {{ else }}
-  {{ if $.Site.Params.cdnUrl }}
+  {{ if (and (not (eq (printf "%v" $.Site.BaseURL) "http://localhost:1313/")) $.Site.Params.cdnUrl) }}
   <meta property="og:image" content="{{ replace .Params.mediaimg "/img/" $.Site.Params.cdnUrl }}">
   {{ else }}
   <meta property="og:image" content="{{ replace (print .Site.BaseURL .Params.headerbg) "//" "/" }}">
@@ -141,7 +141,7 @@
       {{ end }}
     </div>
     {{ if and (eq .Type "reviews") .IsPage }}
-    {{ if $.Site.Params.cdnUrl }}
+    {{ if (and (not (eq (printf "%v" $.Site.BaseURL) "http://localhost:1313/")) $.Site.Params.cdnUrl) }}
     <div class="site-header-bg" style="background-image: url('{{ replace .Params.headerbg "/img/" (print $.Site.Params.cdnUrl "w_35/") }}')" data-fullbg="{{ replace .Params.headerbg "/img/" $.Site.Params.cdnUrl }}"></div>
     {{ else }}
     <div class="site-header-bg" style="background-image: url('{{ replace .Params.headerbg "/img/" "/img/thumbs/" }}')" data-fullbg="{{ .Params.headerbg }}"></div>
@@ -149,7 +149,7 @@
     {{ else }}
     {{ $reviews := ($.Site.GetPage "section" "reviews").Pages }}
     {{ range first 1 $reviews }}
-    {{ if $.Site.Params.cdnUrl }}
+    {{ if (and (not (eq (printf "%v" $.Site.BaseURL) "http://localhost:1313/")) $.Site.Params.cdnUrl) }}
     <div class="site-header-bg" style="background-image: url('{{ replace .Params.headerbg "/img/" (print $.Site.Params.cdnUrl "w_35/") }}')" data-fullbg="{{ replace .Params.headerbg "/img/" $.Site.Params.cdnUrl }}"></div>
     {{ else }}
     <div class="site-header-bg" style="background-image: url('{{ replace .Params.headerbg "/img/" "/img/thumbs/" }}')" data-fullbg="{{ .Params.headerbg }}"></div>
@@ -165,7 +165,7 @@
     }
     img.src = src;
     </script>
-    {{ if $.Site.Params.cdnUrl }}
+    {{ if (and (not (eq (printf "%v" $.Site.BaseURL) "http://localhost:1313/")) $.Site.Params.cdnUrl) }}
     <script src="https://cdn.polyfill.io/v2/polyfill.min.js?features=IntersectionObserver"></script>
     {{ end }}
   </header>

@@ -4,7 +4,7 @@
 
 <article class="post post-single">
     <section class="post-content container">
-    {{ if $.Site.Params.cdnUrl }}
+    {{ if (and (not (eq (printf "%v" $.Site.BaseURL) "http://localhost:1313/")) $.Site.Params.cdnUrl) }}
     {{ safeHTML (replace .Content "<img src=\"/img/" (print "<img src=\"" $.Site.Params.cdnUrl)) }}
     {{ else }}
     {{ .Content }}
@@ -63,7 +63,7 @@
             </p>
             {{ end }}
         </section>
-        {{ if $.Site.Params.cdnUrl }}
+        {{ if (and (not (eq (printf "%v" $.Site.BaseURL) "http://localhost:1313/")) $.Site.Params.cdnUrl) }}
         <div class="post-aside-bg" style="background-image: url('{{ replace .Params.asidebg "/img/" (print $.Site.Params.cdnUrl "w_35/") }}')" data-fullbg="{{ replace .Params.asidebg "/img/" $.Site.Params.cdnUrl }}"></div>
         {{ else }}
         <div class="post-aside-bg" style="background-image: url('{{ replace .Params.asidebg "/img/" "/img/thumbs/" }}')" data-fullbg="{{ .Params.asidebg }}"></div>
