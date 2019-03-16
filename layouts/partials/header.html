@@ -44,10 +44,12 @@
   <link rel="shortcut icon" href="{{ .Site.BaseURL }}favicon.ico" type="image/x-icon">
 
   <title>
-    {{ if eq .Type "reviews" }}
-      {{ .Title }} {{ .Params.subtitle }} Review - {{ .Site.Params.name }}
-    {{ else if $.Scratch.Get "single" }}
-      {{ .Title }} {{ .Params.subtitle }} - {{ .Site.Params.name }}
+    {{ if $.Scratch.Get "single" }}
+      {{ if eq .Type "reviews" }}
+        {{ .Title }} {{ .Params.subtitle }} Review - {{ .Site.Params.name }}
+      {{ else }}
+        {{ .Title }} {{ .Params.subtitle }} - {{ .Site.Params.name }}
+      {{ end }}
     {{ else if eq .Title .Site.Params.name }}
       {{ .Site.Params.name }}
     {{ else if eq .Type "tags" }}
