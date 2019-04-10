@@ -1,0 +1,5 @@
+<ul>
+{{ range $name, $pages := $.Site.Taxonomies.tags }}
+  <li><a href="/tags/{{ urlize $name }}">{{ $name }}</a> ({{ $pages.Count }})</li>
+{{ end }}
+</ul>
